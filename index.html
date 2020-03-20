@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang=fr dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Don't play together</title>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <input id="ip" type="text" placeholder="Entrez le code">
+    <input type="button" value="Entrer" onclick="printip()">
+    <p id="display_ip"></p>
+    <script type="text/javascript">
+      function printip() {
+        let input = document.getElementById("ip").value;
+
+        document.getElementById("display_ip").innerHTML = input;
+      }
+    </script>
+  </body>
+</html>
