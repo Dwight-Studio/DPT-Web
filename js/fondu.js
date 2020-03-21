@@ -11,6 +11,6 @@ function fondu(nomDiv)
     {
       setTimeout(f,20);// attend 20 ms, et relance la fonction
     }
-  };// l'appel une première fois pour lancer la boucle();
-  f();
+  };
+  f();// l'appel une première fois pour lancer la boucle();
 }
