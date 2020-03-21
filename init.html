@@ -5,9 +5,15 @@
     <title>Don't play together</title>
   </head>
   <body>
+    <h1 id="Error"></h1>
+    <h4 id="ErrorE"></h4>
     <script type="text/javascript">
-        session-is = document.link.namedItem("session-id");
-        document.write(session-is);
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const sessionid = urlParams.get("session-id");
+      if(sessionid == ""){
+        document.getElementById("Error").innerHTML = "400 Bad Request";
+      }
     </script>
   </body>
 </html>
