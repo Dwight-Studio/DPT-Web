@@ -4,17 +4,14 @@
     <meta charset="utf-8">
     <title>Don't play together</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="/js/readJSON.js"></script>
+    <script src="/js/fondu.js"></script>
+    <script src="sessions.json"></script>
   </head>
   <body>
-    <input id="ip" type="text" placeholder="Entrez l'id de la session">
-    <input type="button" value="Entrer" onclick="printip()">
-    <p id="display_ip"></p>
-    <script type="text/javascript">
-      function printip() {
-        let input = document.getElementById("ip").value;
-
-        document.getElementById("display_ip").innerHTML = input;
-      }
-    </script>
+    <div class="center" id="fondu">
+      <input id="ip" type="text" placeholder="Entrez l'id de la session">
+      <input type="button" value="Se connecter" onclick="triggerFondu()">
+    </div>
   </body>
 </html>
