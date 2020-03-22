@@ -9,7 +9,7 @@
 
   echo $session_id;
 
-  if($session_id == null || $playerid == null || !($vote == 1 || $vote == 2) || !array_key_exists($session_id, $sessions) || !array_key_exists($playerid, $sessions[$session_id])) {
+  if($session_id == null || $playerid == null || !($vote == "1" || $vote == "2") || !array_key_exists($session_id, $sessions) || !array_key_exists($playerid, $sessions[$session_id])) {
    echo json_encode(false);
   } else {
    $sessions[$session_id][$playerid] = $vote;
