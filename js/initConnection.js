@@ -1,7 +1,25 @@
-window.onload = eventsListeners
+window.onload = eventsListeners;
+var preventSpam = false;
 
+function removeMessages() {
+  // Supprimer les anciens messages qui étaient affichés (avec animation)
+  Array.from(document.getElementsByClassName("message")).forEach(function(item) {
+    var i = 1
+    var f = function() {
+      item.style.opacity = i;
+      i = i - 0.02;
+      if(i>=0) {
+        setTimeout(f, 5);
+      }
+    };
+
+    f(); // Lancement de l'animation
+    item.parentNode.removeChild(item)
+  });
+}
 
 function displayError() {
+  removeMessages();
   // Afficher un message (un div avec du text)
 
   var messageContainer = document.getElementById("message-container");
@@ -9,7 +27,35 @@ function displayError() {
   var text = document.createTextNode("Session inexistante ou expirée. Vérifiez le code ou réouvrez une session."); // Ajout du texte (objet enfant)
 
   messageDiv.appendChild(text);
-  messageDiv.classList.add("message-error"); // Ajout de la classe pour le style CSS
+  messageDiv.classList.add("message"); // Ajout de la classe pour le style CSS
+  messageDiv.classList.add("error"); // Ajout de la classe pour le style CSS
+  messageContainer.appendChild(messageDiv); // Ajour de l'élément à la page
+
+  // Animation d'affichage
+  var i = 0
+  var f = function() {
+    messageDiv.style.opacity = i;
+    i = i + 0.02;
+    if(i<1) {
+      setTimeout(f, 5);
+    }
+  };
+
+  f(); // Lancement de la boucle
+  preventSpam = false;
+}
+
+
+function displayConnect() {
+  // Afficher un message (un div avec du text)
+
+  var messageContainer = document.getElementById("message-container");
+  var messageDiv = document.createElement("div"); // Création de la div
+  var text = document.createTextNode("Connexion en cours..."); // Ajout du texte (objet enfant)
+
+  messageDiv.appendChild(text);
+  messageDiv.classList.add("message"); // Ajout de la classe pour le style CSS
+  messageDiv.classList.add("connect"); // Ajout de la classe pour le style CSS
   messageContainer.appendChild(messageDiv); // Ajour de l'élément à la page
 
   // Animation d'affichage
@@ -27,6 +73,7 @@ function displayError() {
 
 
 function checkValidity() {
+  displayConnect();
   // Vérification de la validité du formulaire
 
   var sessionInput = document.getElementById("sessionInput");
@@ -42,7 +89,7 @@ function checkValidity() {
   // Sinon on continue et on fait les annimations d'erreurs
 
   var inputStyle = document.getElementById("sessionInput").style;
-  inputStyle.border = "3px solid red";
+  inputStyle.backgroundColor = "rgba(255, 0, 0, 0.3)";
   displayError()
   return false;
 }
@@ -50,21 +97,13 @@ function checkValidity() {
 
 function submit(event) {
   event.preventDefault();
+  if (preventSpam) {
+    return;
+  }
 
-  // Supprimer les anciens messages qui étaient affichés (avec animation)
-  Array.from(document.getElementsByClassName("message-error")).forEach(function(item) {
-    var i = 1
-    var f = function() {
-      item.style.opacity = i;
-      i = i - 0.02;
-      if(i>=0) {
-        setTimeout(f, 5);
-      }
-    };
+  preventSpam = true;
 
-    f(); // Lancement de l'animation
-    item.parentNode.removeChild(item)
-  });
+  removeMessages();
 
   // Si le formulaire est correcte, alors faire l'animation puis rediriger
   if (checkValidity()) {

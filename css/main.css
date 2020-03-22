@@ -1,10 +1,11 @@
-.fondu {
-  position: absolute;
-  top: 45%;
+#fondu {
   width: 90%;
-  margin-left: 39px;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   opacity: 1;
 }
 
@@ -16,32 +17,44 @@ input {
   font-family: "VT323";
 }
 
-.message-container {
+#message-container {
   display: flex;
-  margin: 12px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
   align-items: center;
 }
 
-.message-error {
-    background-color: rgba(255, 0, 0, 0.5);
-    color: white;
-    font-size: 55px;
-    font-family: "VT323";
-    text-align: center;
-    width: 100%;
-    padding: 25px;
-    opacity: 0;
+.message {
+  color: white;
+  font-size: 55px;
+  font-family: "VT323";
+  text-align: center;
+  width: 100%;
+  padding: 25px;
+  opacity: 0;
+  border-radius: 12px;
+  margin-bottom: 20px;
 }
 
-input[type=submit] {
+.error {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.connect {
+    background-color: rgba(76, 163, 221, 0.7);
+}
+
+#submit {
+  color: white;
   background-color: #4CAF50;
   border: none;
   cursor: pointer;
   margin-top: 40px;
 }
 
-input[type=text] {
-  border: 3px solid;
+#sessionInput {
+  color: rgb(80, 80, 80);
+  border: none;
+  background-color: rgba(150, 150, 150, 0.2);
   text-align: center;
 }

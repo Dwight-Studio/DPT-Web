@@ -14,6 +14,7 @@ div {
     padding-top: 235px;
     padding-bottom: 235px;
     font-size: 80px;
+    border-radius: 15px;
 }
 
 #buttonModif2{
@@ -24,4 +25,5 @@ div {
   padding-top: 235px;
   padding-bottom: 235px;
   font-size: 80px;
+  border-radius: 15px;
 }
