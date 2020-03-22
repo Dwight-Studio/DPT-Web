@@ -1,32 +1,34 @@
 window.onload = eventsListeners
 
 
-function submit(event) {
-  event.preventDefault()
+function checkValidity() {
   var sessionInput = document.getElementById("sessionInput");
   var inputText = sessionInput.value;
   var data = readJSON("sessions.json");
 
-  var valid = false;
-
   for(var key in data) {
     if (key.toLowerCase() == inputText.toLowerCase()) {
-      valid = true;
-      break;
+      return true;
     }
   }
 
-  if (!valid) {
-    var inputStyle = sessionInput.style;
-    inputStyle.border = "3px solid red";
-    document.getElementById("sessionInput").setCustomValidity("Id de session invalide.")
-    return;
-  } else {
-    document.getElementById("sessionInput").setCustomValidity("")
-  }
+  var sessionInput = document.getElementById("sessionInput");
+  var inputStyle = sessionInput.style;
+  inputStyle.border = "3px solid red";
+  var errorMessage = document.getElementById("error-message");
+  var messageStyle = errorMessage.style
+  messageStyle.backgroundColor = "red";
+  messageStyle.visibility = "visible";
+  return false;
+}
 
-  setTimeout(tryConnection,1600);
-  fondu("fondu");
+
+function submit(event) {
+  event.preventDefault();
+  if (checkValidity()) {
+    setTimeout(tryConnection,1600);
+    fondu("fondu");
+  }
 }
 
 
@@ -34,8 +36,10 @@ function tryConnection() {
   var sessionInput = document.getElementById("sessionInput");
   var inputText = sessionInput.value;
   var ID = Math.random().toString(36).substr(2, 9);
-  send("createPlayerID.php?playerid="+ID+"?session="+inputText);
-  window.location.assign("play.html?session="+inputText+"?playerid="+ID);
+  var xmlReq = new XMLHttpRequest();
+  xmlReq.open("GET", "createPlayerID.php?playerid="+ID+"&session="+inputText, true);
+  xmlReq.send();
+  window.location.assign("play.html?session="+inputText+"&playerid="+ID);
 }
 
 

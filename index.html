@@ -11,10 +11,13 @@
     <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="center" id="fondu">
+    <div class="fondu" id="fondu">
+      <div class="error-container">
+        <p class="error-message" id="error-message"> Session introuvable, veuillez réessayer.</p>
+      </div>
       <form>
-        <input id="sessionInput" type="text" placeholder="Entrez l'id de la session" required="Entrez un code valide.">
-        <input id="submit" type="submit" value="Se connecter">
+        <input id="sessionInput" type="text" placeholder="Entrez l'id de la session" required autocomplete="off">
+        <input onblur="return checkValidity()" id="submit" type="submit" value="Se connecter">
       </form>
     </div>
   </body>
