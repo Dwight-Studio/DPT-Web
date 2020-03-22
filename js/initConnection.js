@@ -3,7 +3,7 @@ window.onload = eventsListeners
 
 function displayError() {
   // Afficher un message (un div avec du text)
-  
+
   var messageContainer = document.getElementById("message-container");
   var messageDiv = document.createElement("div"); // Création de la div
   var text = document.createTextNode("Session inexistante ou expirée. Vérifiez le code ou réouvrez une session."); // Ajout du texte (objet enfant)
@@ -80,9 +80,7 @@ function tryConnection() {
   var ID = Math.random().toString(36).substr(2, 9); // Générer un code aléatoire (id de joueur)
 
   // Création et envois d'une requète vers un PHP pour enregister le joueur
-  var xmlReq = new XMLHttpRequest();
-  xmlReq.open("GET", "createPlayerID.php?playerid="+ID+"&session="+inputText, true);
-  xmlReq.send();
+  send("registerPlayerID.php?playerid="+ID+"&session="+inputText);
   //TODO: Verifier que le serveur renvois bien "true"
 
   fondu("fondu"); // Animation
