@@ -16,13 +16,22 @@ input {
   font-family: "VT323";
 }
 
-.error-message {
-  color: white;
-  font-size: 55px;
-  font-family: "VT323";
-  text-align: center;
-  background-color: rgba(255, 0, 0, 0.5);
-  visibility: hidden;
+.message-container {
+  display: flex;
+  margin: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.message-error {
+    background-color: rgba(255, 0, 0, 0.5);
+    color: white;
+    font-size: 55px;
+    font-family: "VT323";
+    text-align: center;
+    width: 100%;
+    padding: 25px;
+    opacity: 0;
 }
 
 input[type=submit] {

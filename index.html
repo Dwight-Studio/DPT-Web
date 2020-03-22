@@ -12,11 +12,10 @@
   </head>
   <body>
     <div class="fondu" id="fondu">
-      <div class="error-container">
-        <p class="error-message" id="error-message"> Session introuvable, veuillez réessayer.</p>
+      <div id="message-container" class="message-container">
       </div>
       <form>
-        <input id="sessionInput" type="text" placeholder="Entrez l'id de la session" required autocomplete="off">
+        <input id="sessionInput" type="text" placeholder="Entrez l'id de la session" autocomplete="off">
         <input onblur="return checkValidity()" id="submit" type="submit" value="Se connecter">
       </form>
     </div>

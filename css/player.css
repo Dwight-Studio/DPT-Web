@@ -1,0 +1,27 @@
+div {
+  position: absolute;
+  top: 59%;
+  width: 90%;
+  margin-left: 290px;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#buttonModif1{
+    position: relative;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 235px;
+    padding-bottom: 235px;
+    font-size: 80px;
+}
+
+#buttonModif2{
+  position: relative;
+  margin-top: 200px;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 235px;
+  padding-bottom: 235px;
+  font-size: 80px;
+}
