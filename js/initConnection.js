@@ -31,10 +31,10 @@ function triggerFondu() {
     return;
   }
 
+  setTimeout(tryConnection,1600);
   fondu("fondu");
-  setTimeout(tryConnection, 1010);
 }
 
 function tryConnection() {
-
+  document.write("CONNECTED TO THE BEAUTIFUL SERVER AND YOUR SESSION");
 }
