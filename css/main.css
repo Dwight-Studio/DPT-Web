@@ -17,7 +17,7 @@ input {
   font-family: "VT323";
 }
 
-input[type=button] {
+input[type=submit], input[type=button] {
   background-color: #4CAF50;
   border: none;
   cursor: pointer;
