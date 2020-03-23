@@ -9,7 +9,7 @@ function fondu(nomDiv)
 
     if(i>=0)// si c'est toujours pas égal à 1
     {
-      setTimeout(f,20);// attend 20 ms, et relance la fonction
+      setTimeout(f,10);// attend 20 ms, et relance la fonction
     }
   };
   f();// l'appel une première fois pour lancer la boucle();

@@ -1,10 +1,11 @@
-div {
+#fade {
   position: absolute;
   top: 59%;
   width: 90%;
   margin-left: 290px;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+  opacity: 0;
 }
 
 #buttonModif1{
