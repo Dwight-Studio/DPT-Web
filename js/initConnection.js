@@ -97,7 +97,7 @@ function tryConnection() {
   // Tout est ok, on peut rediriger le client après l'animation
   setTimeout(function() {
     window.location.assign("play.html?session="+inputText+"&playerid="+ID);
-  }, 300);
+  }, 500);
 }
 
 

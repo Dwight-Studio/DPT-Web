@@ -7,10 +7,10 @@
   $playerid = $_GET["playerid"]; //Stockage du paramètre "playerid" de l'url dans $playerid
 
   if($session_id == null || $playerid == null || !array_key_exists($session_id, $sessions)) {
-   echo json_encode(false); //Affiche false sur la page quand problème
+   echo json_encode(false); //Envoie en json false sur la page quand problème
   }else{
    $sessions[$session_id][$playerid] = 0; //Ajout du $playerid dans le fichier sessions.json avec sa valeur par défaut
-   echo json_encode(true); //Affiche true sur la page quand fonctionne
+   echo json_encode(true); //Envoie en json true sur la page quand fonctionne
   }
 
   $file = fopen("sessions.json", "w+") or die("Error: unable to open file"); //Ouverture du fichier sessions.json an lecture/écriture. Si problème erreur
