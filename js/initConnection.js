@@ -4,17 +4,8 @@ var preventSpam = false;
 function removeMessages() {
   // Supprimer les anciens messages qui étaient affichés (avec animation)
   Array.from(document.getElementsByClassName("message")).forEach(function(item) {
-    var i = 1
-    var f = function() {
-      item.style.opacity = i;
-      i = i - 0.02;
-      if(i>=0) {
-        setTimeout(f, 5);
-      }
-    };
-
-    f(); // Lancement de l'animation
-    item.parentNode.removeChild(item)
+    fadeOut(item, 5);
+    item.parentNode.removeChild(item);
   });
 }
 
@@ -31,17 +22,7 @@ function displayError() {
   messageDiv.classList.add("error"); // Ajout de la classe pour le style CSS
   messageContainer.appendChild(messageDiv); // Ajour de l'élément à la page
 
-  // Animation d'affichage
-  var i = 0
-  var f = function() {
-    messageDiv.style.opacity = i;
-    i = i + 0.02;
-    if(i<1) {
-      setTimeout(f, 5);
-    }
-  };
-
-  f(); // Lancement de la boucle
+  fadeIn(messageDiv, 5);
   preventSpam = false;
 }
 
@@ -58,22 +39,11 @@ function displayConnect() {
   messageDiv.classList.add("connect"); // Ajout de la classe pour le style CSS
   messageContainer.appendChild(messageDiv); // Ajour de l'élément à la page
 
-  // Animation d'affichage
-  var i = 0
-  var f = function() {
-    messageDiv.style.opacity = i;
-    i = i + 0.02;
-    if(i<1) {
-      setTimeout(f, 5);
-    }
-  };
-
-  f(); // Lancement de la boucle
+  fadeIn(messageDiv, 5);
 }
 
 
 function checkValidity() {
-  displayConnect();
   // Vérification de la validité du formulaire
 
   var sessionInput = document.getElementById("sessionInput");
@@ -87,10 +57,9 @@ function checkValidity() {
   }
 
   // Sinon on continue et on fait les annimations d'erreurs
-
   var inputStyle = document.getElementById("sessionInput").style;
   inputStyle.backgroundColor = "rgba(255, 0, 0, 0.3)";
-  displayError()
+  displayError();
   return false;
 }
 
@@ -104,10 +73,11 @@ function submit(event) {
   preventSpam = true;
 
   removeMessages();
+  displayConnect();
 
   // Si le formulaire est correcte, alors faire l'animation puis rediriger
   if (checkValidity()) {
-    setTimeout(tryConnection,1600);
+    tryConnection();
   }
 }
 
@@ -120,14 +90,14 @@ function tryConnection() {
 
   // Création et envois d'une requète vers un PHP pour enregister le joueur
   send("registerPlayerID.php?playerid="+ID+"&session="+inputText);
-  //TODO: Verifier que le serveur renvois bien "true"
+  //TODO: Verifier que le serveur renvoit bien "true"
 
-  fondu("fondu"); // Animation
+  fadeOut(document.getElementById("fade"), 10); // Animation
 
   // Tout est ok, on peut rediriger le client après l'animation
   setTimeout(function() {
     window.location.assign("play.html?session="+inputText+"&playerid="+ID);
-  }, 1600);
+  }, 300);
 }
 
 

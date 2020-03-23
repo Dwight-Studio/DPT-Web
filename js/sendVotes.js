@@ -1,22 +1,7 @@
-window.onload = fading;
+window.onload = function() {fadeIn(document.getElementById("fade"), 10)};
 var urlParams = new URLSearchParams(window.location.search); //Création de l'objet urlParams
 const sessionid = urlParams.get("session"); //Récupération du paramètre session situé dans l'url
 const playerid = urlParams.get("playerid"); //Récupération du paramètre playerid situé dans l'url
-
-
-function fading() {
-  // Animation d'affichage
-  var i = 0
-  var f = function() {
-    document.getElementById("fade").style.opacity = i;
-    i = i + 0.02;
-    if(i<1) {
-      setTimeout(f, 10);
-    }
-  };
-
-  f(); // Lancement de la boucle 
-}
 
 
 function vote1() {
