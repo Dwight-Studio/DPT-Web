@@ -9,7 +9,7 @@
   if($session_id == null || $playerid == null || !array_key_exists($session_id, $sessions)) {
    echo json_encode(false); //Envoie en json false sur la page quand problème
   }else{
-   $sessions[$session_id][$playerid] = 0; //Ajout du $playerid dans le fichier sessions.json avec sa valeur par défaut
+   $sessions[$session_id][$playerid] = "0"; //Ajout du $playerid dans le fichier sessions.json avec sa valeur par défaut
    echo json_encode(true); //Envoie en json true sur la page quand fonctionne
   }
 
