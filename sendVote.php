@@ -3,14 +3,14 @@
   $sessions = json_decode(fread($file, filesize("sessions.json")), true); //Stockage du contenu dans la variable $sessions
   fclose($file); //Fermeture du fichier
 
-  $session_id = $_GET["session"]; //Stockage du paramètre "session" de l'url dans $session_id
+  $sessionid = $_GET["session"]; //Stockage du paramètre "session" de l'url dans $session_id
   $playerid = $_GET["playerid"]; //Stockage du paramètre "playerid" de l'url dans $playerid
   $vote = $_GET["vote"]; //Stockage du paramètre "vote" de l'url dans $vote
 
-  if($session_id == null || $playerid == null || !($vote == "1" || $vote == "2") || !array_key_exists($session_id, $sessions) || !array_key_exists($playerid, $sessions[$session_id])) {
+  if($sessionid == null || $playerid == null || !($vote == "1" || $vote == "2") || !array_key_exists($sessionid, $sessions) || !array_key_exists($playerid, $sessions[$sessionid])) {
    echo json_encode(false); //Affiche false sur la page quand problème
   } else {
-   $sessions[$session_id][$playerid] = $vote; //Modification de la valeur de $playerid (1 ou 2)
+   $sessions[$sessionid][$playerid] = $vote; //Modification de la valeur de $playerid (1 ou 2)
    echo json_encode(true); //Affiche true sur la page quand fonctionne
   }
 

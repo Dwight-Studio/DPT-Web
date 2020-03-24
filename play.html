@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang=fr dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Play - Don't Play Together</title>
@@ -7,11 +7,16 @@
     <script src="/js/misc.js"></script>
     <script src="/js/annimations.js"></script>
     <script src="/js/sendVotes.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="fade">
-      <input id="buttonModif1" type="button" value="Modifieur 1" onclick="vote1()">
-      <input id="buttonModif2" type="button" value="Modifieur 2" onclick="vote2()">
+      <div id="message-container">
+      </div>
+      <input id="buttonModif1" type="button" onclick="vote1()">
+      <input id="buttonModif2" type="button" onclick="vote2()">
     </div>
+    <h4>Temps restants :</h4>
+    <h4 id="timer">Time</h4>
   </body>
 </html>

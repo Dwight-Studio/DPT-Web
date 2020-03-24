@@ -7,7 +7,7 @@
   $activeConnections = json_decode(fread($file2, filesize("activeConnections.json")), true);
   fclose($file2);
 
-  $session_id = $_GET["session"];
+  $session_id = $_GET["session-id"];
 
   if($session_id == null){
    echo json_encode(null);

@@ -1,4 +1,4 @@
-window.onload = eventsListeners;
+window.onload = load;
 var preventSpam = false;
 
 function removeMessages() {
@@ -10,7 +10,6 @@ function removeMessages() {
 }
 
 function displayError(message) {
-  removeMessages();
   // Afficher un message (un div avec du text)
 
   var messageContainer = document.getElementById("message-container");
@@ -37,7 +36,7 @@ function displayConnect() {
 
   messageDiv.appendChild(text);
   messageDiv.classList.add("message"); // Ajout de la classe pour le style CSS
-  messageDiv.classList.add("connect"); // Ajout de la classe pour le style CSS
+  messageDiv.classList.add("info"); // Ajout de la classe pour le style CSS
   messageContainer.appendChild(messageDiv); // Ajour de l'élément à la page
 
   fadeIn(messageDiv, 10);
@@ -53,7 +52,8 @@ function checkValidity() {
     // Si erreur on fait les annimations d'erreurs
     var inputStyle = document.getElementById("sessionInput").style;
     inputStyle.backgroundColor = "rgba(255, 0, 0, 0.3)";
-    displayError("Session inexistante ou expirée. Vérifiez le code ou réouvrez une session.");
+    removeMessages();
+    displayError("Session inexistante ou expirée. Vérifiez le code ou ouvrez une nouvelle session.");
     return false;
     }
     return true;
@@ -84,29 +84,33 @@ function tryConnection(sessionid) {
   var ID = Math.random().toString(36).substr(2, 9); // Générer un code aléatoire (id de joueur)
 
   // Création et envois d'une requète vers un PHP pour enregister le joueur
-  send("registerPlayerID.php?playerid="+ID+"&session="+sessionid);
+
   //TODO: Verifier que le serveur renvoit bien "true"
-
   fadeOut(document.getElementById("fade"), 10); // Animation
-
   // Tout est ok, on peut rediriger le client après l'animation
   setTimeout(function() {
-    window.location.assign("play.html?session="+sessionid+"&playerid="+ID);
+    window.location.assign("registerPlayerID.php?playerid="+ID+"&session="+sessionid);
   }, 500);
 }
 
-function eventsListeners() {
+function load() {
   var urlParams = new URLSearchParams(window.location.search); //Création de l'objet urlParams
   var sessionid = urlParams.get("session"); //Récupération du paramètre session situé dans l'url
+  var error = urlParams.get("error"); //Récupération du paramètre error situé dans l'url
 
   if (sessionid != null) {
-    displayConnect();
-    var inputText = document.getElementById("sessionInput").disabled = true;
-    document.getElementById("sessionInput").value = sessionid;
-    if (checkSession(sessionid)) {
-      setTimeout(tryConnection(sessionid), 1000);
-    } else {
-      displayError("Session inexistante ou expirée. Vérifiez le code ou réouvrez une session.");
+    if (error != "true") {
+      displayConnect();
+      var inputText = document.getElementById("sessionInput").disabled = true;
+      document.getElementById("sessionInput").value = sessionid;
+      if (checkSession(sessionid)) {
+        tryConnection(sessionid);
+      } else {
+        displayError("Session inexistante ou expirée. Vérifiez le code ou ouvrez une nouvelle session.");
+      }
+    } else if (error == "true") {
+      document.getElementById("sessionInput").value = sessionid;
+      displayError("Erreur serveur, veuillez réessayer ultérieurement.");
     }
   }
 

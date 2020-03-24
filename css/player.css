@@ -10,21 +10,58 @@
 
 #buttonModif1{
     position: relative;
-    padding-left: 80px;
-    padding-right: 80px;
-    padding-top: 235px;
-    padding-bottom: 235px;
-    font-size: 80px;
-    border-radius: 15px;
+    background-image: url(/img/notFound.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 600px;
+    width: 600px;
+    border: 1px outset;
+    border-radius: 20px;
 }
 
 #buttonModif2{
   position: relative;
+  background-image: url(/img/notFound.png);
+  background-repeat: no-repeat;
+  background-size: contain;
   margin-top: 200px;
-  padding-left: 80px;
-  padding-right: 80px;
-  padding-top: 235px;
-  padding-bottom: 235px;
-  font-size: 80px;
-  border-radius: 15px;
+  height: 600px;
+  width: 600px;
+  border-radius: 20px;
+}
+
+#message-container {
+  display: flex;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+h4 {
+  font-family: "VT323";
+  font-size: 90px;
+}
+
+.timer {
+
+}
+
+.message {
+  color: white;
+  font-size: 55px;
+  font-family: "VT323";
+  text-align: center;
+  width: 100%;
+  padding: 25px;
+  opacity: 0;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.error {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.info {
+    background-color: rgba(76, 163, 221, 0.7);
 }
