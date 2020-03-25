@@ -1,4 +1,5 @@
 <?php
+  header("Content-type: application/json\n\n");
   $file = fopen("sessions.json", "r") or die("Error: unable to open file"); //Ouverture du fichier sessions.json en read only. Si problème erreur
   $sessions = json_decode(fread($file, filesize("sessions.json")), true); //Stockage du contenu dans la variable $sessions
   fclose($file); //Fermeture du fichier
