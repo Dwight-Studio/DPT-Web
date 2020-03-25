@@ -5,9 +5,9 @@
 
   $sessionid = $_GET["session"]; //Stockage du paramètre "session" de l'url dans $session_id
 
-  if($sessionid == null){
+  if ($sessionid == null) {
    echo json_encode(null); //Envoie en json false sur la page quand problème
-  }else{
+  } else {
    $activeConnections[$sessionid] = time(); //Enregistre la date actuelle
    echo json_encode(true); //Envoie en json $session_id sur la page
   }

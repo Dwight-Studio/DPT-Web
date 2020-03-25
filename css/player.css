@@ -1,15 +1,19 @@
 #fade {
+
+  opacity: 0;
+}
+
+#buttons {
   position: absolute;
-  top: 59%;
+  top: 49%;
   width: 90%;
-  margin-left: 290px;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  opacity: 0;
 }
 
 #buttonModif1{
     position: relative;
+    margin-left: 180px;
     background-image: url(/img/notFound.png);
     background-repeat: no-repeat;
     background-size: contain;
@@ -21,6 +25,7 @@
 
 #buttonModif2{
   position: relative;
+  margin-left: 180px;
   background-image: url(/img/notFound.png);
   background-repeat: no-repeat;
   background-size: contain;
@@ -39,11 +44,18 @@
 
 h4 {
   font-family: "VT323";
-  font-size: 90px;
+  font-size: 80px;
 }
 
-.timer {
+#time {
+  position: absolute;
+  margin-left: 547px;
+  bottom: -4.5%;
+}
 
+#timer {
+  position: absolute;
+  top: 88%;
 }
 
 .message {

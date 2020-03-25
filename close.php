@@ -7,14 +7,14 @@
   $activeConnections = json_decode(fread($file2, filesize("activeConnections.json")), true);
   fclose($file2);
 
-  $session_id = $_GET["session-id"];
+  $sessionid = $_GET["session"];
 
-  if($session_id == null){
+  if ($sessionid == null) {
    echo json_encode(null);
-  }else{
-   $sessions[$session_id] = array();
-   $activeConnections[$sessionid] = time(); //Enregistre la date actuelle
-   echo json_encode($session_id);
+  } else {
+   unset($sessions[$sessionid]);
+   unset($activeConnections[$sessionid]);
+   echo json_encode(true);
   }
 
   $file = fopen("sessions.json", "w+") or die("Error: unable to open file");
