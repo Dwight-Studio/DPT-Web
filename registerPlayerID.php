@@ -18,7 +18,7 @@
   fwrite($file, json_encode($sessions, JSON_PRETTY_PRINT)); //Ecriture des nouvelles infos dans sessions.json
   fclose($file); //Fermeture du fichier
 
-  sleep (1);
+  sleep (3);
 
   if ($valid) {
     header("Location: /play.html?session={$sessionid}&playerid={$playerid}", true, 302);

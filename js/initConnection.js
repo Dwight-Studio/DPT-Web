@@ -28,14 +28,16 @@ function checkValidity() {
     inputStyle.backgroundColor = "rgba(255, 0, 0, 0.3)";
     removeMessages();
     displayError("Session inexistante ou expirée. Vérifiez le code ou ouvrez une nouvelle session.");
+    var inputText = document.getElementById("sessionInput").disabled = false;
+    preventSpam = false;
     return false;
     }
-    return true;
+  return true;
 }
 
 function submit(event) {
   event.preventDefault();
-  var inputText = document.getElementById("sessionInput").disabled = true;
+  document.getElementById("sessionInput").disabled = true;
   if (preventSpam) {
     return;
   }
@@ -80,11 +82,17 @@ function load() {
       if (checkSession(sessionid)) {
         tryConnection(sessionid);
       } else {
+        removeMessages();
         displayError("Session inexistante ou expirée. Vérifiez le code ou ouvrez une nouvelle session.");
+        document.getElementById("sessionInput").disabled = false;
+        preventSpam = false;
       }
     } else if (error == "true") {
+      removeMessages();
       document.getElementById("sessionInput").value = sessionid;
       displayError("Erreur serveur, veuillez réessayer ultérieurement.");
+      document.getElementById("sessionInput").disabled = false;
+      preventSpam = false;
     }
   }
 
