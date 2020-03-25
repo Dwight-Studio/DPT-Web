@@ -1,32 +1,6 @@
 window.onload = load;
 var preventSpam = false;
 
-function removeMessages() {
-  // Supprimer les anciens messages qui étaient affichés (avec animation)
-  Array.from(document.getElementsByClassName("message")).forEach(function(item) {
-    fadeOut(item, 10);
-    item.parentNode.removeChild(item);
-  });
-}
-
-function displayError(message) {
-  // Afficher un message (un div avec du text)
-
-  var messageContainer = document.getElementById("message-container");
-  var messageDiv = document.createElement("div"); // Création de la div
-  var text = document.createTextNode(message); // Ajout du texte (objet enfant)
-
-  messageDiv.appendChild(text);
-  messageDiv.classList.add("message"); // Ajout de la classe pour le style CSS
-  messageDiv.classList.add("error"); // Ajout de la classe pour le style CSS
-  messageContainer.appendChild(messageDiv); // Ajour de l'élément à la page
-
-  fadeIn(messageDiv, 10);
-  preventSpam = false;
-  var inputText = document.getElementById("sessionInput").disabled = false;
-}
-
-
 function displayConnect() {
   // Afficher un message (un div avec du text)
 

@@ -3,12 +3,14 @@ window.onload = load;;
 const urlParams = new URLSearchParams(window.location.search); //Création de l'objet urlParams
 const sessionid = urlParams.get("session"); //Récupération du paramètre session situé dans l'url
 const playerid = urlParams.get("playerid"); //Récupération du paramètre playerid situé dans l'url
-var button1 = document.getElementById("buttonModif1");
-var button2 = document.getElementById("buttonModif2");
-
 
 function load() {
   var data = readJSON("sessions.json"); // Lecture des données enregistrées
+  document.getElementById("buttonModif1").disabled = true;
+  document.getElementById("buttonModif2").disabled = true;
+  document.getElementById("buttons").style.opacity = 0;
+  document.getElementById("timeDiv").style.opacity = 0;
+  displayMessage("En attente d'un nouveau vote...");
   if (!checkPlayerID(sessionid, playerid)) {
     if (sessionid != null) {
       window.location.assign("/?session=" + sessionid); //Redirection vers l'acceuil si erreur
@@ -23,28 +25,36 @@ function load() {
 
 
 function vote1() {
-  button1.disabled = true;
-  button2.disabled = true;
+  document.getElementById("buttonModif1").disabled = true;
+  document.getElementById("buttonModif2").disabled = true;
   fadeOut(document.getElementById("buttons"), 10);
+  fadeOut(document.getElementById("timeDiv"), 10);
   send("sendVote.php?session=" + sessionid + "&playerid=" + playerid + "&vote=" + "1"); // Envoie d'une requête vers un PHP pour enregistrer le vote
+  displayMessage("En attente d'un nouveau vote...");
 }
 
 
 function vote2() {
-  button1.disabled = true;
-  button2.disabled = true;
+  document.getElementById("buttonModif1").disabled = true;
+  document.getElementById("buttonModif2").disabled = true;
   fadeOut(document.getElementById("buttons"), 10);
+  fadeOut(document.getElementById("timeDiv"), 10);
   send("sendVote.php?session=" + sessionid + "&playerid=" + playerid + "&vote=" + "2"); // Envoie d'une requête vers un PHP pour enregistrer le vote
+  displayMessage("En attente d'un nouveau vote...");
 }
 
-
-function startVote(event) {
+function startVote(/*event*/endDate) {
   // Lorsque qu'un vote débute
-  const data = JSON.parse(event.data);
-  const endDate = new Date(data["endDate"])
-  const mod1 = data["mod1"]
-  const mod2 = data["mod2"]
+  //const data = JSON.parse(event.data);
+  //const endDate = new Date(data["endDate"])
+  //const mod1 = data["mod1"]
+  //const mod2 = data["mod2"]
   var timer = document.getElementById("time");
+  removeMessages();
+  fadeIn(document.getElementById("buttons"), 10);
+  fadeIn(document.getElementById("timeDiv"), 10);
+  document.getElementById("buttonModif1").disabled = false;
+  document.getElementById("buttonModif2").disabled = false;
   setInterval(function(){
     var actualDate = new Date().getTime();
     timer.innerHTML = Math.round((endDate - actualDate)/1000);
@@ -76,49 +86,6 @@ function timeOut(event) {
 
 function keepAlive(event) {
   //TODO: Ajout du keepAlive
-}
-
-
-function displayError(message) {
-  // Afficher un message (un div avec du text)
-
-  var messageContainer = document.getElementById("message-container");
-  var messageDiv = document.createElement("div"); // Création de la div
-  var text = document.createTextNode(message); // Ajout du texte (objet enfant)
-
-  messageDiv.appendChild(text);
-  messageDiv.classList.add("message"); // Ajout de la classe pour le style CSS
-  messageDiv.classList.add("error"); // Ajout de la classe pour le style CSS
-  messageContainer.appendChild(messageDiv); // Ajour de l'élément à la page
-
-  fadeIn(messageDiv, 10);
-  preventSpam = false;
-  var inputText = document.getElementById("sessionInput").disabled = false;
-}
-
-
-function displayMessage(message) {
-  // Afficher un message (un div avec du text)
-
-  var messageContainer = document.getElementById("message-container");
-  var messageDiv = document.createElement("div"); // Création de la div
-  var text = document.createTextNode(message); // Ajout du texte (objet enfant)
-
-  messageDiv.appendChild(text);
-  messageDiv.classList.add("message"); // Ajout de la classe pour le style CSS
-  messageDiv.classList.add("info"); // Ajout de la classe pour le style CSS
-  messageContainer.appendChild(messageDiv); // Ajour de l'élément à la page
-
-  fadeIn(messageDiv, 10);
-}
-
-
-function removeMessages() {
-  // Supprimer les anciens messages qui étaient affichés (avec animation)
-  Array.from(document.getElementsByClassName("message")).forEach(function(item) {
-    fadeOut(item, 10);
-    item.parentNode.removeChild(item);
-  });
 }
 
 // Ajout du listener pour les votes
