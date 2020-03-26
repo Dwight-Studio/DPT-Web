@@ -1,4 +1,5 @@
 <?php
+  ini_set("output_buffering", "off");
   header("Content-Type: text/event-stream\n\n");
 
   $sessionid = $_GET["session"];
