@@ -6,7 +6,7 @@
   fclose($file); //Fermeture du fichier
 
   $sessionid = $_GET["session"]; //Stockage du paramètre "session" de l'url dans $session_id
-  $data = $_GET["data"]
+  $data = $_GET["data"];
 
   if ($sessionid == null || $data == null) {
    echo json_encode(null); //Envoie en json false sur la page quand problème

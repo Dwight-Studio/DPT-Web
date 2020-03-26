@@ -73,8 +73,6 @@ function displayError(message) {
   messageContainer.appendChild(messageDiv); // Ajour de l'élément à la page
 
   fadeIn(messageDiv, 10);
-  preventSpam = false;
-  var inputText = document.getElementById("sessionInput").disabled = false;
 }
 
 function displayMessage(message) {
