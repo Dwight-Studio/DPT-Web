@@ -18,11 +18,11 @@ body {
 }
 
 #fade {
+  transform: translate(-50%, -50%);
+  position: absolute;
   top: 50%;
   left: 50%;
   opacity: 0;
-  padding: 50px;
-  padding-top: 46%;
   background-color: rgba(255, 255, 255, .5);
   border-radius: 20px;
 }

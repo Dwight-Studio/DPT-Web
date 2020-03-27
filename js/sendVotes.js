@@ -19,7 +19,6 @@ function load() {
   var data = readJSON("sessions.json"); // Lecture des données enregistrées
   document.getElementById("buttonModif1").disabled = true;
   document.getElementById("buttonModif2").disabled = true;
-  document.getElementById("buttons").style.opacity = 0;
   displayMessage("En attente d'un nouveau vote...");
   if (!checkPlayerID(sessionid, playerid)) {
     if (sessionid != null) {
@@ -60,7 +59,6 @@ function startVote(event) {
   const mod1 = data["mod1"]
   const mod2 = data["mod2"]
   removeMessages();
-  fadeIn(document.getElementById("buttons"), 10);
   document.getElementById("buttonModif1").disabled = false;
   document.getElementById("buttonModif2").disabled = false;
   displayMessage("Temps restants : 00", "timer")
