@@ -1,39 +1,64 @@
 body {
   overflow: hidden;
+  background-image: url(/img/background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.desktop {
+  width: 30%;
+  zoom: 0.5;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity: 1;
 }
 
 #fade {
-
   opacity: 0;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 20px;
 }
 
 #buttons {
-  position: absolute;
-  top: 49%;
   width: 90%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
-#buttonModif1{
-    position: relative;
-    margin-left: 180px;
-    background-image: url(/img/notFound.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 600px;
-    width: 600px;
-    border: 1px outset;
-    border-radius: 20px;
-}
-
-#buttonModif2{
-  position: relative;
-  margin-left: 180px;
+#buttonModif1 {
+  margin-top: -392px;
+  width: 90%;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   background-image: url(/img/notFound.png);
   background-repeat: no-repeat;
   background-size: contain;
-  margin-top: 200px;
+  height: 600px;
+  width: 600px;
+  border-radius: 20px;
+}
+
+#buttonModif2{
+  margin-top: 387px;
+  width: 90%;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-image: url(/img/notFound.png);
+  background-repeat: no-repeat;
+  background-size: contain;
   height: 600px;
   width: 600px;
   border-radius: 20px;
@@ -63,11 +88,12 @@ h4 {
 }
 
 .message {
+  margin: 0;
   position: absolute;
-  top: 49%;
-  left: 2.55%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   color: white;
   font-size: 55px;
   font-family: "VT323";

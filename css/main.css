@@ -1,8 +1,20 @@
 body {
   overflow: hidden;
-  background-image: url(/img/wall.jpg);
+  background-image: url(/img/background.png);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.desktop {
+  width: 30%;
+  zoom: 0.5;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity: 1;
 }
 
 #fade {
@@ -14,6 +26,9 @@ body {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   opacity: 1;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 20px;
 }
 
 input {

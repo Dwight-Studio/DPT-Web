@@ -6,6 +6,10 @@ const sessionid = urlParams.get("session"); //Récupération du paramètre sessi
 const playerid = urlParams.get("playerid"); //Récupération du paramètre playerid situé dans l'url
 
 function load() {
+  if (!window.mobileAndTabletcheck()) {
+    document.getElementById("fade").classList.add("desktop");
+  }
+
   // Ajout du listener pour les votes
   voteEvents = new EventSource("voteStream.php?session=" + sessionid);
   voteEvents.addEventListener("startVote", startVote);
@@ -16,7 +20,6 @@ function load() {
   document.getElementById("buttonModif1").disabled = true;
   document.getElementById("buttonModif2").disabled = true;
   document.getElementById("buttons").style.opacity = 0;
-  document.getElementById("timeDiv").style.opacity = 0;
   displayMessage("En attente d'un nouveau vote...");
   if (!checkPlayerID(sessionid, playerid)) {
     if (sessionid != null) {
@@ -35,7 +38,7 @@ function vote1() {
   document.getElementById("buttonModif1").disabled = true;
   document.getElementById("buttonModif2").disabled = true;
   fadeOut(document.getElementById("buttons"), 10);
-  fadeOut(document.getElementById("timeDiv"), 10);
+  removeMessage("timer")
   send("sendVote.php?session=" + sessionid + "&playerid=" + playerid + "&vote=" + "1"); // Envoie d'une requête vers un PHP pour enregistrer le vote
   displayMessage("En attente d'un nouveau vote...");
 }
@@ -45,7 +48,7 @@ function vote2() {
   document.getElementById("buttonModif1").disabled = true;
   document.getElementById("buttonModif2").disabled = true;
   fadeOut(document.getElementById("buttons"), 10);
-  fadeOut(document.getElementById("timeDiv"), 10);
+  removeMessage("timer")
   send("sendVote.php?session=" + sessionid + "&playerid=" + playerid + "&vote=" + "2"); // Envoie d'une requête vers un PHP pour enregistrer le vote
   displayMessage("En attente d'un nouveau vote...");
 }
@@ -56,22 +59,22 @@ function startVote(event) {
   var endDate = new Date(data["endDate"])
   const mod1 = data["mod1"]
   const mod2 = data["mod2"]
-  var timer = document.getElementById("time");
   removeMessages();
   fadeIn(document.getElementById("buttons"), 10);
-  fadeIn(document.getElementById("timeDiv"), 10);
   document.getElementById("buttonModif1").disabled = false;
   document.getElementById("buttonModif2").disabled = false;
+  displayMessage("Temps restants : 00", "timer")
   var inter = setInterval(function(){
     var actualDate = new Date().getTime();
-    timer.innerHTML = Math.round((endDate - actualDate)/1000);
-    var remainingTime = timer.innerHTML;
+    timer = document.getElementById('timer')
+    var remainingTime = Math.round((endDate - actualDate)/1000)
+    timer.innerHTML = "Temps restants : " + remainingTime + " secondes";
     if (parseInt(remainingTime) <= 0){
       clearInterval(inter);
       document.getElementById("buttonModif1").disabled = true;
       document.getElementById("buttonModif2").disabled = true;
       fadeOut(document.getElementById("buttons"), 10);
-      fadeOut(document.getElementById("timeDiv"), 10);
+      removeMessage("timer")
       displayMessage("En attente d'un nouveau vote...");
     }
   }, 1000);

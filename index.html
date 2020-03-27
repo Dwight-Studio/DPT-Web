@@ -10,13 +10,15 @@
     <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div id="fade">
-      <div id="message-container">
+    <div id="desktop">
+      <div id="fade">
+        <div id="message-container">
+        </div>
+        <form>
+          <input id="sessionInput" type="text" placeholder="Entrez l'id de la session" autocomplete="off">
+          <input onblur="return checkValidity()" id="submit" type="submit" value="Se connecter">
+        </form>
       </div>
-      <form>
-        <input id="sessionInput" type="text" placeholder="Entrez l'id de la session" autocomplete="off">
-        <input onblur="return checkValidity()" id="submit" type="submit" value="Se connecter">
-      </form>
     </div>
   </body>
 </html>
