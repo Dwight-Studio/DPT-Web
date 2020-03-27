@@ -1,7 +1,7 @@
 <?php
   header("Cache-Control: no-cache");
   header("Content-Type: text/event-stream");
-  ini_set("output_buffering", "off");
+  echo ini_set("output_buffering", "Off");
 
   $sessionid = $_GET["session"];
   $previousPendingVotes = null;

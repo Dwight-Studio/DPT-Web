@@ -7,7 +7,7 @@ const playerid = urlParams.get("playerid"); //Récupération du paramètre playe
 
 function load() {
   if (!window.mobileAndTabletcheck()) {
-    document.getElementById("fade").classList.add("desktop");
+    document.getElementById("desktop").classList.add("desktop");
   }
 
   // Ajout du listener pour les votes
@@ -17,8 +17,8 @@ function load() {
   voteEvents.addEventListener("keepAlive", keepAlive);
 
   var data = readJSON("sessions.json"); // Lecture des données enregistrées
-  document.getElementById("buttonModif1").disabled = true;
-  document.getElementById("buttonModif2").disabled = true;
+  document.getElementById("buttonModif1").style.display = "none";
+  document.getElementById("buttonModif2").style.display = "none";
   displayMessage("En attente d'un nouveau vote...");
   if (!checkPlayerID(sessionid, playerid)) {
     if (sessionid != null) {
@@ -34,20 +34,22 @@ function load() {
 
 
 function vote1() {
-  document.getElementById("buttonModif1").disabled = true;
-  document.getElementById("buttonModif2").disabled = true;
-  fadeOut(document.getElementById("buttons"), 10);
-  removeMessage("timer")
+  document.getElementById("buttonModif1").style.display = "none";
+  document.getElementById("buttonModif2").style.display = "none";
+  fadeOut(document.getElementById("buttonModif1"), 10);
+  fadeOut(document.getElementById("buttonModif2"), 10);
+  removeMessage("timer");
   send("sendVote.php?session=" + sessionid + "&playerid=" + playerid + "&vote=" + "1"); // Envoie d'une requête vers un PHP pour enregistrer le vote
   displayMessage("En attente d'un nouveau vote...");
 }
 
 
 function vote2() {
-  document.getElementById("buttonModif1").disabled = true;
-  document.getElementById("buttonModif2").disabled = true;
-  fadeOut(document.getElementById("buttons"), 10);
-  removeMessage("timer")
+  document.getElementById("buttonModif1").style.display = "none";
+  document.getElementById("buttonModif2").style.display = "none";
+  fadeOut(document.getElementById("buttonModif1"), 10);
+  fadeOut(document.getElementById("buttonModif2"), 10);
+  removeMessage("timer");
   send("sendVote.php?session=" + sessionid + "&playerid=" + playerid + "&vote=" + "2"); // Envoie d'une requête vers un PHP pour enregistrer le vote
   displayMessage("En attente d'un nouveau vote...");
 }
@@ -59,8 +61,10 @@ function startVote(event) {
   const mod1 = data["mod1"]
   const mod2 = data["mod2"]
   removeMessages();
-  document.getElementById("buttonModif1").disabled = false;
-  document.getElementById("buttonModif2").disabled = false;
+  document.getElementById("buttonModif1").style.display = "block";
+  document.getElementById("buttonModif2").style.display = "block";
+  fadeIn(document.getElementById("buttonModif1"), 10);
+  fadeIn(document.getElementById("buttonModif2"), 10);
   displayMessage("Temps restants : 00", "timer")
   var inter = setInterval(function(){
     var actualDate = new Date().getTime();
@@ -69,10 +73,11 @@ function startVote(event) {
     timer.innerHTML = "Temps restants : " + remainingTime + " secondes";
     if (parseInt(remainingTime) <= 0){
       clearInterval(inter);
-      document.getElementById("buttonModif1").disabled = true;
-      document.getElementById("buttonModif2").disabled = true;
-      fadeOut(document.getElementById("buttons"), 10);
-      removeMessage("timer")
+      document.getElementById("buttonModif1").style.display = "none";
+      document.getElementById("buttonModif2").style.display = "none";
+      fadeOut(document.getElementById("buttonModif1"), 10);
+      fadeOut(document.getElementById("buttonModif2"), 10);
+      removeMessage("timer");
       displayMessage("En attente d'un nouveau vote...");
     }
   }, 1000);

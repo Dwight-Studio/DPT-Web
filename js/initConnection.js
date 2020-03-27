@@ -74,7 +74,7 @@ function load() {
   if (!window.mobileAndTabletcheck()) {
     document.getElementById("desktop").classList.add("desktop");
   }
-
+  fadeIn(document.getElementById("fade"), 10);
   var urlParams = new URLSearchParams(window.location.search); //Création de l'objet urlParams
   var sessionid = urlParams.get("session"); //Récupération du paramètre session situé dans l'url
   var error = urlParams.get("error"); //Récupération du paramètre error situé dans l'url

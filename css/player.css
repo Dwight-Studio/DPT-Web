@@ -6,7 +6,7 @@ body {
 }
 
 .desktop {
-  width: 26%;
+  width: 30%;
   zoom: 0.5;
   margin: 0;
   position: absolute;
@@ -18,16 +18,6 @@ body {
 }
 
 #fade {
-  transform: translate(-50%, -50%);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  opacity: 0;
-  background-color: rgba(255, 255, 255, .5);
-  border-radius: 20px;
-}
-
-#buttons {
   width: 90%;
   margin: 0;
   position: absolute;
@@ -35,43 +25,25 @@ body {
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  opacity: 1;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 20px;
 }
 
-#buttonModif1 {
-  margin-top: -419px;
-  width: 90%;
-  position: absolute;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+.buttons {
+  opacity: 0;
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
   background-image: url(/img/notFound.png);
   background-repeat: no-repeat;
   background-size: contain;
   height: 600px;
   width: 600px;
   border-radius: 20px;
-}
-
-#buttonModif2{
-  margin-top: 419px;
-  width: 90%;
-  position: absolute;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  background-image: url(/img/notFound.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 600px;
-  width: 600px;
-  border-radius: 20px;
-}
-
-#message-container {
-  display: flex;
   margin-bottom: 20px;
-  flex-wrap: wrap;
-  align-items: center;
+  margin-top: 20px;
 }
 
 h4 {
@@ -85,26 +57,23 @@ h4 {
   top: 88%;
 }
 
-#timer {
-  position: absolute;
-  z-index: 10;
+#message-container {
+  display: flex;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .message {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
   color: white;
   font-size: 55px;
   font-family: "VT323";
   text-align: center;
-  width: 90%;
+  width: 100%;
   padding: 25px;
   opacity: 0;
   border-radius: 12px;
+  margin-bottom: 20px;
 }
 
 .error {
