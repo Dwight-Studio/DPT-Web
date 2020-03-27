@@ -18,8 +18,11 @@ body {
 }
 
 #fade {
+  top: 50%;
+  left: 50%;
   opacity: 0;
   padding: 50px;
+  padding-top: 46%;
   background-color: rgba(255, 255, 255, .5);
   border-radius: 20px;
 }
@@ -35,7 +38,7 @@ body {
 }
 
 #buttonModif1 {
-  margin-top: -392px;
+  margin-top: -419px;
   width: 90%;
   position: absolute;
   left: 50%;
@@ -50,7 +53,7 @@ body {
 }
 
 #buttonModif2{
-  margin-top: 387px;
+  margin-top: 419px;
   width: 90%;
   position: absolute;
   left: 50%;
@@ -84,7 +87,7 @@ h4 {
 
 #timer {
   position: absolute;
-  top: 88%;
+  z-index: 10;
 }
 
 .message {
