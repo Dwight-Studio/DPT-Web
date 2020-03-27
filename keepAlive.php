@@ -10,7 +10,7 @@
    echo json_encode(null); //Envoie en json false sur la page quand problème
   } else {
    $activeConnections[$sessionid] = time(); //Enregistre la date actuelle
-   echo json_encode(true); //Envoie en json $session_id sur la page
+   echo json_encode(True); //Envoie en json $session_id sur la page
   }
 
   $file = fopen("activeConnections.json", "w+") or die("Error: unable to open file"); //Ouverture du fichier sessions.json an lecture/écriture. Si problème erreur

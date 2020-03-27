@@ -1,5 +1,5 @@
 window.onload = load;
-var voteEvents = Null;
+var voteEvents = null;
 
 const urlParams = new URLSearchParams(window.location.search); //Création de l'objet urlParams
 const sessionid = urlParams.get("session"); //Récupération du paramètre session situé dans l'url
@@ -7,7 +7,7 @@ const playerid = urlParams.get("playerid"); //Récupération du paramètre playe
 
 function load() {
   // Ajout du listener pour les votes
-  var voteEvents = new EventSource("voteStream.php?session=" + sessionid);
+  voteEvents = new EventSource("voteStream.php?session=" + sessionid);
   voteEvents.addEventListener("startVote", startVote);
   voteEvents.addEventListener("timeOut", timeOut);
   voteEvents.addEventListener("keepAlive", keepAlive);
