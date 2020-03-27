@@ -74,7 +74,7 @@ function load() {
   if (!window.mobileAndTabletcheck()) {
     document.getElementById("desktop").classList.add("desktop");
   }
-  fadeIn(document.getElementById("fade"), 10);
+
   var urlParams = new URLSearchParams(window.location.search); //Création de l'objet urlParams
   var sessionid = urlParams.get("session"); //Récupération du paramètre session situé dans l'url
   var error = urlParams.get("error"); //Récupération du paramètre error situé dans l'url
@@ -85,20 +85,25 @@ function load() {
       var inputText = document.getElementById("sessionInput").disabled = true;
       document.getElementById("sessionInput").value = sessionid;
       if (checkSession(sessionid)) {
-        tryConnection(sessionid);
+        var f = async function() { fadeIn(document.getElementById("fade"), 10) }
+        f().then(function() {tryConnection(sessionid)});
       } else {
+        fadeIn(document.getElementById("fade"), 10);
         removeMessages();
         displayError("Session inexistante ou expirée. Vérifiez le code ou ouvrez une nouvelle session.");
         document.getElementById("sessionInput").disabled = false;
         preventSpam = false;
       }
     } else if (error == "true") {
+      fadeIn(document.getElementById("fade"), 10);
       removeMessages();
       document.getElementById("sessionInput").value = sessionid;
       displayError("Erreur serveur, veuillez réessayer ultérieurement.");
       document.getElementById("sessionInput").disabled = false;
       preventSpam = false;
     }
+  } else {
+    fadeIn(document.getElementById("fade"), 10);
   }
 
   // Ajout du listener pour l'évènement de soumission du formulaire

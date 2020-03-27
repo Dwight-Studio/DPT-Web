@@ -34,6 +34,7 @@ function load() {
 
 
 function vote1() {
+  clearInterval(inter);
   document.getElementById("buttonModif1").style.display = "none";
   document.getElementById("buttonModif2").style.display = "none";
   fadeOut(document.getElementById("buttonModif1"), 10);
@@ -45,6 +46,7 @@ function vote1() {
 
 
 function vote2() {
+  clearInterval(inter);
   document.getElementById("buttonModif1").style.display = "none";
   document.getElementById("buttonModif2").style.display = "none";
   fadeOut(document.getElementById("buttonModif1"), 10);
@@ -66,7 +68,7 @@ function startVote(event) {
   fadeIn(document.getElementById("buttonModif1"), 10);
   fadeIn(document.getElementById("buttonModif2"), 10);
   displayMessage("Temps restants : 00", "timer")
-  var inter = setInterval(function(){
+  inter = setInterval(function(){
     var actualDate = new Date().getTime();
     timer = document.getElementById('timer')
     var remainingTime = Math.round((endDate - actualDate)/1000)
