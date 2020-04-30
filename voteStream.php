@@ -1,12 +1,11 @@
 <?php
-  header("Cache-Control: no-cache");
   header("Content-Type: text/event-stream");
-  echo ini_set("output_buffering", "Off");
+  header("Cache-Control: no-cache");
+  echo ini_set("output_buffering", "0");
 
   $sessionid = $_GET["session"];
   $previousPendingVotes = null;
 
-  ob_implicit_flush(1);
   while (true) {
     $file = fopen("activeConnections.json", "r") or die("Error: unable to open file"); //Ouverture du fichier sessions.json en read only. Si problème erreur
     $activeConnections = json_decode(fread($file, filesize("activeConnections.json")), true); //Stockage du contenu dans la variable $sessions
@@ -40,5 +39,6 @@
     }
 
     sleep(1);
+    flush();
   }
  ?>
