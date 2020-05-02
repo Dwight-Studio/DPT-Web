@@ -99,10 +99,9 @@ function timeOut(event) {
 }
 
 function chooseImage(mod1, mod2) {
-  image = "/img/effects/" + mod1 + ".png";
-  document.getElementById("buttonModif1").style.backgroundImage = "url(" + image + ")";
+  document.getElementById("buttonModif1").style.background = "url(/img/effects/Ice.png)";
   if(isFileExist("/img/effects/" + mod1)) {
-    
+
   }
   if(isFileExist("/img/effects" + mod2)) {
     document.getElementById("buttonModif2").style.backgroundImage = "url(/img/effects/" + mod2 + ".png)";
