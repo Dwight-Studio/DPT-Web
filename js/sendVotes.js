@@ -100,7 +100,7 @@ function timeOut(event) {
 
 function isFileExist(name){
   var xmlReq = new XMLHttpRequest();
-  xmlReq.open("GET", name, false);
+  xmlReq.open("GET", name + ".png", false);
   xmlReq.send();
   if(xmlReq.status == 404) {
     return false;
