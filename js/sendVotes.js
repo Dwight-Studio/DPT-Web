@@ -62,6 +62,7 @@ function startVote(event) {
   var endDate = new Date(data["endDate"])
   const modif1 = data["mod1"]
   const modif2 = data["mod2"]
+  console.log(modif1);
   removeMessages();
   document.getElementById("buttonModif1").style.display = "block";
   document.getElementById("buttonModif2").style.display = "block";
