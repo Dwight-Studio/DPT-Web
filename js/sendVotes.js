@@ -62,7 +62,6 @@ function startVote(event) {
   var endDate = new Date(data["endDate"])
   const modif1 = data["mod1"]
   const modif2 = data["mod2"]
-  return(modif1)
   removeMessages();
   document.getElementById("buttonModif1").style.display = "block";
   document.getElementById("buttonModif2").style.display = "block";
@@ -100,9 +99,10 @@ function timeOut(event) {
 }
 
 function chooseImage(mod1, mod2) {
+  image = "/img/effects/" + mod1 + ".png";
+  document.getElementById("buttonModif1").style.backgroundImage = "url(" + image + ")";
   if(isFileExist("/img/effects/" + mod1)) {
-    image = "/img/effects/" + mod1 + ".png";
-    document.getElementById("buttonModif1").style.backgroundImage = "url(" + image + ")";
+    
   }
   if(isFileExist("/img/effects" + mod2)) {
     document.getElementById("buttonModif2").style.backgroundImage = "url(/img/effects/" + mod2 + ".png)";
