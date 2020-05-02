@@ -112,9 +112,13 @@ function isFileExist(name){
 function chooseImage(mod1, mod2) {
   if(isFileExist("/img/effects/" + mod1)) {
     document.getElementById("buttonModif1").style.background = "url(/img/effects/" + mod1 + ".png)";
+    document.getElementById("buttonModif1").style.backgroundSize = "contain";
+    document.getElementById("buttonModif1").style.backgroundRepeat = "no-repeat";
   }
   if(isFileExist("/img/effects" + mod2)) {
     document.getElementById("buttonModif2").style.background = "url(/img/effects/" + mod2 + ".png)";
+    document.getElementById("buttonModif1").style.backgroundSize = "contain";
+    document.getElementById("buttonModif1").style.backgroundRepeat = "no-repeat";
   }
 }
 
