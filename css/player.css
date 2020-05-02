@@ -36,14 +36,17 @@ body {
   display: none;
   margin-left: auto;
   margin-right: auto;
-  background-image: url(/img/effects/notFound.png);
-  background-repeat: no-repeat;
-  background-size: contain;
   height: 600px;
   width: 600px;
   border-radius: 20px;
   margin-bottom: 20px;
   margin-top: 20px;
+}
+
+#buttonModif1 {
+  background-image: url(/img/effects/notFound.png);
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 h4 {
