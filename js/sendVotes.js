@@ -110,12 +110,11 @@ function isFileExist(name){
 }
 
 function chooseImage(mod1, mod2) {
-  document.getElementById("buttonModif1").style.background = "url(/img/effects/Ice.png)";
   if(isFileExist("/img/effects/" + mod1)) {
-
+    document.getElementById("buttonModif1").style.background = "url(/img/effects/" + mod1 + ".png)";
   }
   if(isFileExist("/img/effects" + mod2)) {
-    document.getElementById("buttonModif2").style.backgroundImage = "url(/img/effects/" + mod2 + ".png)";
+    document.getElementById("buttonModif2").style.background = "url(/img/effects/" + mod2 + ".png)";
   }
 }
 
