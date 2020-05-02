@@ -15,7 +15,7 @@
    echo json_encode(true); //Envoie en json $session_id sur la page
   }
 
-  $file = fopen("pendingVotes.json", "w+") or die("Error: unable to open file"); //Ouverture du fichier sessions.json an lecture/écriture. Si problème erreur
-  fwrite($file, json_encode($pendingVotes, JSON_PRETTY_PRINT)); //Ecriture des nouvelles infos dans sessions.json
+  $file = fopen("pendingVotes.json", "w+") or die("Error: unable to open file"); //Ouverture du fichier pendingVotes.json an lecture/écriture. Si problème erreur
+  fwrite($file, json_encode($pendingVotes, JSON_PRETTY_PRINT)); //Ecriture des nouvelles infos dans pendingVotes.json
   fclose($file); //Fermeture du fichier
 ?>

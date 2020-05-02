@@ -4,6 +4,17 @@ function send(url){
   xmlReq.send();
 }
 
+function isFileExist(name){
+  var xmlReq = new XMLHttpRequest();
+  xmlReq.open("GET", name, false);
+  xmlReq.send();
+  if(xmlReq.status == 404) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 function readJSON(file) {
   var rawFile = new XMLHttpRequest(); //Création de l'objet rawFile
   var allText = null; //Valeur de allText à null par défaut

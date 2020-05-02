@@ -60,11 +60,12 @@ function startVote(event) {
   // Lorsque qu'un vote débute
   const data = JSON.parse(event.data);
   var endDate = new Date(data["endDate"])
-  const mod1 = data["mod1"]
-  const mod2 = data["mod2"]
+  const modif1 = data["mod1"]
+  const modif2 = data["mod2"]
   removeMessages();
   document.getElementById("buttonModif1").style.display = "block";
   document.getElementById("buttonModif2").style.display = "block";
+  chooseImage(modif1, modif2);
   fadeIn(document.getElementById("buttonModif1"), 10);
   fadeIn(document.getElementById("buttonModif2"), 10);
   displayMessage("Temps restants : 00", "timer")
@@ -97,6 +98,14 @@ function timeOut(event) {
   }, 3000);
 }
 
+function chooseImage(mod1, mod2) {
+  if(isFileExist("/img/effects/" + mod1)) {
+    document.getElementById("buttonModif1").style.backgroundImage = "url(/img/effects/" + mod1 + ".png)";
+  }
+  if(isFileExist("/img/effects" + mod2)) {
+    document.getElementById("buttonModif2").style.backgroundImage = "url(/img/effects/" + mod2 + ".png)";
+  }
+}
 
 function keepAlive(event) {
   //TODO: Ajout du keepAlive
