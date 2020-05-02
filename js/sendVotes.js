@@ -98,8 +98,22 @@ function timeOut(event) {
   }, 3000);
 }
 
+function isFileExist(name){
+  var xmlReq = new XMLHttpRequest();
+  xmlReq.open("GET", name, false);
+  xmlReq.send();
+  if(xmlReq.status == 404) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 function chooseImage(mod1, mod2) {
   document.getElementById("buttonModif1").style.background = "url(/img/effects/Ice.png)";
+  if(isFileExist("/img/effects/" + mod1)) {
+
+  }
   if(isFileExist("/img/effects" + mod2)) {
     document.getElementById("buttonModif2").style.backgroundImage = "url(/img/effects/" + mod2 + ".png)";
   }
