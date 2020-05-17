@@ -1,0 +1,76 @@
+@media screen and (max-width: 1280px)
+{
+  body {
+    overflow: hidden;
+    background-image: url(/img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: 4000px;
+  }
+
+  #fade {
+    width: 90%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    padding: 50px;
+    background-color: rgba(255, 255, 255, .5);
+    border-radius: 20px;
+  }
+
+  .buttons {
+    opacity: 0;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(/img/effects/notFound.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 600px;
+    width: 600px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  h4 {
+    font-family: "VT323";
+    font-size: 80px;
+  }
+
+  #time {
+    position: absolute;
+    left: 57%;
+    top: 88%;
+  }
+
+  #message-container {
+    display: flex;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .message {
+    color: white;
+    font-size: 55px;
+    font-family: "VT323";
+    text-align: center;
+    width: 100%;
+    padding: 25px;
+    opacity: 0;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  .error {
+      background-color: rgba(255, 0, 0, 0.5);
+  }
+
+  .info {
+      background-color: rgba(76, 163, 221, 0.7);
+  }
+}

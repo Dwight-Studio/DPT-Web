@@ -1,24 +1,12 @@
 body {
   overflow: hidden;
-  background-image: url(/img/background.png);
+  background-image: url(/img/background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.desktop {
-  width: 30%;
-  zoom: 0.5;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  opacity: 1;
-}
-
 #fade {
-  width: 90%;
+  width: 25%;
   margin: 0;
   position: absolute;
   top: 50%;
@@ -26,9 +14,9 @@ body {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   opacity: 1;
-  padding: 50px;
+  padding: 25px;
   background-color: rgba(255, 255, 255, .5);
-  border-radius: 20px;
+  border-radius: 15px;
 }
 
 .buttons {
@@ -39,8 +27,8 @@ body {
   background-image: url(/img/effects/notFound.png);
   background-repeat: no-repeat;
   background-size: contain;
-  height: 600px;
-  width: 600px;
+  height: 300px;
+  width: 300px;
   border-radius: 20px;
   margin-bottom: 20px;
   margin-top: 20px;
@@ -59,21 +47,19 @@ h4 {
 
 #message-container {
   display: flex;
-  margin-bottom: 20px;
   flex-wrap: wrap;
   align-items: center;
 }
 
 .message {
   color: white;
-  font-size: 55px;
+  font-size: 30px;
   font-family: "VT323";
   text-align: center;
   width: 100%;
   padding: 25px;
   opacity: 0;
   border-radius: 12px;
-  margin-bottom: 20px;
 }
 
 .error {

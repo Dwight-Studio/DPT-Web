@@ -6,10 +6,6 @@ const sessionid = urlParams.get("session"); //Récupération du paramètre sessi
 const playerid = urlParams.get("playerid"); //Récupération du paramètre playerid situé dans l'url
 
 function load() {
-  if (!window.mobileAndTabletcheck()) {
-    document.getElementById("desktop").classList.add("desktop");
-  }
-
   // Ajout du listener pour les votes
   voteEvents = new EventSource("voteStream.php?session=" + sessionid);
   voteEvents.addEventListener("startVote", startVote);
@@ -115,13 +111,9 @@ function chooseImage(mod1, mod2) {
     document.getElementById("buttonModif1").style.backgroundSize = "contain";
     document.getElementById("buttonModif1").style.backgroundRepeat = "no-repeat";
   }
-  if(isFileExist("/img/effects" + mod2)) {
+  if(isFileExist("/img/effects/" + mod2)) {
     document.getElementById("buttonModif2").style.background = "url(/img/effects/" + mod2 + ".png)";
-    document.getElementById("buttonModif1").style.backgroundSize = "contain";
-    document.getElementById("buttonModif1").style.backgroundRepeat = "no-repeat";
+    document.getElementById("buttonModif2").style.backgroundSize = "contain";
+    document.getElementById("buttonModif2").style.backgroundRepeat = "no-repeat";
   }
-}
-
-function keepAlive(event) {
-  //TODO: Ajout du keepAlive
 }
